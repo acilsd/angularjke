@@ -1,0 +1,13 @@
+.todoList {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.todoList_item {
+  margin: 5px 0;
+  padding: 5px;
+}
+
+.todoList_title {
+  font-size: 1.1rem;
+}
