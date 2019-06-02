@@ -1,4 +1,5 @@
 <div class="todoList">
-  <app-todo-item *ngFor="let todo of todos" [todo]="todo">
+  <app-add-form (add)="add($event)"></app-add-form>
+  <app-todo-item *ngFor="let todo of todos" [todo]="todo" (delete)="delete($event)">
   </app-todo-item>
 </div>
