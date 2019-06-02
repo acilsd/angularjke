@@ -1,7 +1,4 @@
 <div class="todoList">
-  <div class="todoList_item" *ngFor="let todo of todos">
-    <div class="todoList_title">
-      {{ todo.title }}
-    </div>
-  </div>
+  <app-todo-item *ngFor="let todo of todos" [todo]="todo">
+  </app-todo-item>
 </div>

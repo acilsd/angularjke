@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ITodo } from '../../models/Todo';
 
-import { from } from 'rxjs';
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
@@ -15,8 +14,7 @@ export class TodosComponent implements OnInit {
   ngOnInit() {
     this.todos = [
       { id: 1, title: 'hardcoded', completed: false },
-      { id: 2, title: 'alse hardcoded', completed: false },
+      { id: 2, title: 'alse hardcoded', completed: true },
     ];
   }
-
 }
