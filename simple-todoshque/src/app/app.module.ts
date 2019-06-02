@@ -8,6 +8,8 @@ import { TodosComponent } from './components/todos/todos.component';
 import { TodoItemComponent } from './components/todo-item/todo-item.component';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { AddFormComponent } from './components/add-form/add-form.component';
+import { RouterTestComponent } from './components/Pages/router-test/router-test.component';
+import { RouterTestDaComponent } from './components/Pages/router-test-da/router-test-da.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { AddFormComponent } from './components/add-form/add-form.component';
     TodosComponent,
     TodoItemComponent,
     HeaderComponent,
-    AddFormComponent
+    AddFormComponent,
+    RouterTestComponent,
+    RouterTestDaComponent
   ],
   imports: [
     BrowserModule,
