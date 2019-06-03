@@ -1,0 +1,24 @@
+{
+  "npmScope": "ng-basics",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "ng-basics-e2e": {
+      "tags": []
+    },
+    "ng-basics": {
+      "tags": []
+    },
+    "dashboard-e2e": {
+      "tags": []
+    },
+    "dashboard": {
+      "tags": []
+    }
+  }
+}
