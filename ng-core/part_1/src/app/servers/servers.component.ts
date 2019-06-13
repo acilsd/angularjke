@@ -8,18 +8,20 @@ import { Component, OnInit } from '@angular/core';
 export class ServersComponent implements OnInit {
   canAdd = false;
   serverCreationStatus = 'No server was created';
-  serverName = 'test';
+  serverName = '';
+  servers: string[] = [];
 
   constructor() {
     setTimeout(() => {
       this.canAdd = true;
-    }, 2000);
+    }, 1000);
   }
 
   ngOnInit() {
   }
 
   onCreateServer() {
+    this.servers.push(this.serverName);
     this.serverCreationStatus = `Server was created ${this.serverName}`;
   }
 
