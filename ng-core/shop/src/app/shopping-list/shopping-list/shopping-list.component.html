@@ -1,10 +1,16 @@
 <div class="row">
   <div class="col-xs-10">
-    <app-list-edit-form></app-list-edit-form>
+    <app-list-edit-form
+      (handleAdd)="onAddIngredient($event)"
+    ></app-list-edit-form>
     <hr />
     <ul class="list-group">
-      <a style="cursor:pointer;" class="list-group-item" *ngFor="let ingr of ingredients">
-        {{ ingr.name }} ({{ ingr.amount}})
+      <a
+        style="cursor:pointer;"
+        class="list-group-item"
+        *ngFor="let ingr of ingredients"
+      >
+        {{ ingr.name }} ({{ ingr.amount }})
       </a>
     </ul>
   </div>

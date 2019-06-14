@@ -8,9 +8,8 @@ describe('ListEditFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListEditFormComponent ]
-    })
-    .compileComponents();
+      declarations: [ListEditFormComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
