@@ -3,26 +3,33 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { HeaderComponent } from './layout/header/header.component';
-import { ListComponent } from './shopping-list/list/list.component';
-import { FormComponent } from './shopping-list/form/form.component';
-import { ItemComponent } from './shopping-list/item/item.component';
-import { DetailComponent } from './recipe-list/detail/detail.component';
-import { RecipeComponent } from './recipe-list/recipe/recipe.component';
+
+import { ShoppingListComponent } from './shopping-list/shopping-list/shopping-list.component';
+import { ListEditFormComponent } from './shopping-list/list-edit-form/list-edit-form.component';
+import { ListItemComponent } from './shopping-list/list-item/list-item.component';
+
+import { RecipeListComponent } from './recipe-book/recipe-list/recipe-list.component';
+import { RecipeItemComponent } from './recipe-book/recipe-item/recipe-item.component';
+import { RecipeDetailComponent } from './recipe-book/recipe-detail/recipe-detail.component';
+import { RecipeBookComponent } from './recipe-book/recipe-book.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ListComponent,
-    FormComponent,
-    ItemComponent,
-    DetailComponent,
-    RecipeComponent
+    ShoppingListComponent,
+    ListEditFormComponent,
+    ListItemComponent,
+    RecipeListComponent,
+    RecipeItemComponent,
+    RecipeDetailComponent,
+    RecipeBookComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
