@@ -1,12 +1,6 @@
-import {
-  Component,
-  OnInit,
-  ElementRef,
-  ViewChild,
-  EventEmitter,
-  Output
-} from '@angular/core';
-import { IIngredient, Ingredient } from '../models/ingredient';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Ingredient } from '../models/ingredient';
+import { ShoppingListService } from '../services/shopping-list/shopping-list.service';
 
 @Component({
   selector: 'app-list-edit-form',
@@ -17,9 +11,7 @@ export class ListEditFormComponent implements OnInit {
   @ViewChild('nameInput', { static: true }) nameInput: ElementRef;
   @ViewChild('amountInput', { static: true }) amountInput: ElementRef;
 
-  @Output() handleAdd = new EventEmitter<IIngredient>();
-
-  constructor() {}
+  constructor(private service: ShoppingListService) {}
 
   ngOnInit() {}
 
@@ -30,6 +22,6 @@ export class ListEditFormComponent implements OnInit {
       this.amountInput.nativeElement.value
     );
 
-    this.handleAdd.emit(ingredientToAdd);
+    this.service.onAddIngredient(ingredientToAdd);
   }
 }
