@@ -16,4 +16,9 @@ export class ShoppingListService {
       this.emitDataChange.emit([...this.ingredients]);
     }
   }
+
+  public recieveIngridientsFromRecipe(data: IIngredient[]) {
+    this.ingredients = [...this.ingredients, ...data];
+    this.emitDataChange.emit([...this.ingredients]);
+  }
 }
