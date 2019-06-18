@@ -10,6 +10,7 @@ import { HeaderComponent } from './components/layout/header/header.component';
 import { AddFormComponent } from './components/add-form/add-form.component';
 import { RouterTestComponent } from './components/Pages/router-test/router-test.component';
 import { RouterTestDaComponent } from './components/Pages/router-test-da/router-test-da.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { RouterTestDaComponent } from './components/Pages/router-test-da/router-
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
