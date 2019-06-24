@@ -10,11 +10,11 @@ import { ShoppingListComponent } from './shopping-list/shopping-list/shopping-li
 import { ListEditFormComponent } from './shopping-list/list-edit-form/list-edit-form.component';
 import { ListItemComponent } from './shopping-list/list-item/list-item.component';
 
-import { DropdownDirectiveDirective } from './directives/dropdown-directive.directive';
 import { ShoppingListService } from './shopping-list/services/shopping-list/shopping-list.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecipeBookModule } from './recipe-book/recipe-book.module';
 import { RecipeBookRoutingModule } from './recipe-book/recipe-book-routing,module';
+import { DirectivesModule } from './directives/directives.module';
 
 @NgModule({
   declarations: [
@@ -22,15 +22,15 @@ import { RecipeBookRoutingModule } from './recipe-book/recipe-book-routing,modul
     HeaderComponent,
     ShoppingListComponent,
     ListEditFormComponent,
-    ListItemComponent,
-    DropdownDirectiveDirective
+    ListItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RecipeBookRoutingModule,
     BrowserAnimationsModule,
-    RecipeBookModule
+    RecipeBookModule,
+    DirectivesModule
   ],
   providers: [ShoppingListService],
   bootstrap: [AppComponent]
