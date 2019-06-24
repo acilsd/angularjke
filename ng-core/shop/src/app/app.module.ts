@@ -17,6 +17,7 @@ import { RecipeBookComponent } from './recipe-book/recipe-book.component';
 import { DropdownDirectiveDirective } from './directives/dropdown-directive.directive';
 import { ShoppingListService } from './shopping-list/services/shopping-list/shopping-list.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RecipeBookModule } from './recipe-book/recipe-book.module';
 
 @NgModule({
   declarations: [
@@ -28,10 +29,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RecipeListComponent,
     RecipeItemComponent,
     RecipeDetailComponent,
-    RecipeBookComponent,
+    // RecipeBookComponent,
     DropdownDirectiveDirective
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    RecipeBookModule
+  ],
   providers: [ShoppingListService],
   bootstrap: [AppComponent]
 })
