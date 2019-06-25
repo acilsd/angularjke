@@ -13,7 +13,7 @@ import { ListItemComponent } from './shopping-list/list-item/list-item.component
 import { ShoppingListService } from './shopping-list/services/shopping-list/shopping-list.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecipeBookModule } from './recipe-book/recipe-book.module';
-import { RecipeBookRoutingModule } from './recipe-book/recipe-book-routing,module';
+import { RecipeBookRoutingModule } from './recipe-book/recipe-book-routing.module';
 import { DirectivesModule } from './directives/directives.module';
 
 @NgModule({

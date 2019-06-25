@@ -1,20 +1,22 @@
 import { NgModule } from '@angular/core';
-import { RecipeBookRoutingModule } from './recipe-book-routing,module';
-import { RecipeBookComponent } from './recipe-book.component';
+import { CommonModule } from '@angular/common';
+
+import { RecipeBookRoutingModule } from './recipe-book-routing.module';
+
+import { RecipeBookListComponent } from './recipe-book-list/recipe-book-list.component';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { RecipeItemComponent } from './recipe-item/recipe-item.component';
-import { CommonModule } from '@angular/common';
 import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
   declarations: [
-    RecipeBookComponent,
+    RecipeBookListComponent,
     RecipeListComponent,
     RecipeItemComponent,
     RecipeDetailComponent
   ],
   imports: [RecipeBookRoutingModule, CommonModule, DirectivesModule],
-  bootstrap: [RecipeBookComponent]
+  bootstrap: [RecipeBookListComponent]
 })
 export class RecipeBookModule {}
