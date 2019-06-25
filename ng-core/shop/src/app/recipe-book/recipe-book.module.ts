@@ -8,6 +8,7 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { RecipeItemComponent } from './recipe-item/recipe-item.component';
 import { DirectivesModule } from '../directives/directives.module';
+import { ShoppingListService } from '../shopping-list/services/shopping-list/shopping-list.service';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { DirectivesModule } from '../directives/directives.module';
     RecipeDetailComponent
   ],
   imports: [RecipeBookRoutingModule, CommonModule, DirectivesModule],
-  bootstrap: [RecipeBookListComponent]
+  bootstrap: [RecipeBookListComponent],
+  providers: [ShoppingListService]
 })
 export class RecipeBookModule {}

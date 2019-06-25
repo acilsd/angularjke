@@ -25,7 +25,6 @@ import { DirectivesModule } from './directives/directives.module';
     ShoppingListModule,
     DirectivesModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
