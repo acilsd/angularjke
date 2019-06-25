@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RecipeBookComponent } from './recipe-book/recipe-book.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list/shopping-list.component';
 
 // const routes: Routes = [
 //   { path: '', component: RecipeBookComponent },
@@ -15,7 +13,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./recipe-book/recipe-book.module').then(c => c.RecipeBookModule)
   },
-  { path: 'shoplist', component: ShoppingListComponent }
+  {
+    path: 'shoplist',
+    loadChildren: () =>
+      import('./shopping-list/shopping-list.module').then(
+        c => c.ShoppingListModule
+      )
+  }
 ];
 
 @NgModule({

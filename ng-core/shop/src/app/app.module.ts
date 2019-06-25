@@ -6,33 +6,26 @@ import { AppComponent } from './app.component';
 
 import { HeaderComponent } from './layout/header/header.component';
 
-import { ShoppingListComponent } from './shopping-list/shopping-list/shopping-list.component';
-import { ListEditFormComponent } from './shopping-list/list-edit-form/list-edit-form.component';
-import { ListItemComponent } from './shopping-list/list-item/list-item.component';
-
-import { ShoppingListService } from './shopping-list/services/shopping-list/shopping-list.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecipeBookModule } from './recipe-book/recipe-book.module';
 import { RecipeBookRoutingModule } from './recipe-book/recipe-book-routing.module';
+
+import { ShoppingListModule } from './shopping-list/shopping-list.module';
+import { ShoppingListRoutingModule } from './shopping-list/shopping-list-routing.module';
+
 import { DirectivesModule } from './directives/directives.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    ShoppingListComponent,
-    ListEditFormComponent,
-    ListItemComponent
-  ],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RecipeBookRoutingModule,
-    BrowserAnimationsModule,
+    ShoppingListRoutingModule,
     RecipeBookModule,
+    ShoppingListModule,
     DirectivesModule
   ],
-  providers: [ShoppingListService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
