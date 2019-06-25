@@ -11,8 +11,8 @@ import { RecipeBookRoutingModule } from './recipe-book/recipe-book-routing.modul
 
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { ShoppingListRoutingModule } from './shopping-list/shopping-list-routing.module';
-
-import { DirectivesModule } from './directives/directives.module';
+import { ShoppingListService } from './shopping-list/services/shopping-list/shopping-list.service';
+import { RecipeService } from './recipe-book/services/recipes/recipe.service';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -22,9 +22,9 @@ import { DirectivesModule } from './directives/directives.module';
     RecipeBookRoutingModule,
     ShoppingListRoutingModule,
     RecipeBookModule,
-    ShoppingListModule,
-    DirectivesModule
+    ShoppingListModule
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [ShoppingListService, RecipeService]
 })
 export class AppModule {}

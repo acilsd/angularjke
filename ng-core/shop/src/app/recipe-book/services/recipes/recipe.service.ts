@@ -3,7 +3,9 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { IIngredient } from 'src/app/shopping-list/models/ingredient';
 import { ShoppingListService } from 'src/app/shopping-list/services/shopping-list/shopping-list.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class RecipeService {
   constructor(private shoplist: ShoppingListService) {
     const recipe = new Recipe(
