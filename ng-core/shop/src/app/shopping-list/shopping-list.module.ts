@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ShoppingListRoutingModule } from './shopping-list-routing.module';
 
@@ -16,7 +17,13 @@ import { DirectivesModule } from '../directives/directives.module';
     ListItemComponent
   ],
 
-  imports: [ShoppingListRoutingModule, CommonModule, DirectivesModule],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    ShoppingListRoutingModule,
+    CommonModule,
+    DirectivesModule
+  ],
   bootstrap: [ShoppingListComponent]
 })
 export class ShoppingListModule {}

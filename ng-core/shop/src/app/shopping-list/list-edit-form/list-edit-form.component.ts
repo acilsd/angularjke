@@ -1,6 +1,9 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+
 import { Ingredient } from '../models/ingredient';
 import { ShoppingListService } from '../services/shopping-list/shopping-list.service';
+import { createAddForm } from './form';
 
 @Component({
   selector: 'app-list-edit-form',
@@ -8,20 +11,21 @@ import { ShoppingListService } from '../services/shopping-list/shopping-list.ser
   styleUrls: ['./list-edit-form.component.scss']
 })
 export class ListEditFormComponent implements OnInit {
-  @ViewChild('nameInput', { static: true }) nameInput: ElementRef;
-  @ViewChild('amountInput', { static: true }) amountInput: ElementRef;
+  form: FormGroup;
 
-  constructor(private service: ShoppingListService) {}
+  constructor(
+    private service: ShoppingListService,
+    private formBuilder: FormBuilder
+  ) {
+    this.form = createAddForm(formBuilder);
+  }
 
   ngOnInit() {}
 
   onSubmitAdd(e: Event) {
     e.preventDefault();
-    const ingredientToAdd = new Ingredient(
-      this.nameInput.nativeElement.value,
-      this.amountInput.nativeElement.value
-    );
+    const fields = this.form.value as Ingredient;
 
-    this.service.onAddIngredient(ingredientToAdd);
+    this.service.onAddIngredient(new Ingredient(fields.name, fields.amount));
   }
 }
