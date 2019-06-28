@@ -1,1 +1,46 @@
-<p>nested-form works!</p>
+<form [formGroup]="nestedForm">
+  Values: {{ nestedForm.value | json }}
+  <hr />
+
+  <mat-form-field>
+    <input matInput type="email" placeholder="email" formControlName="email" />
+  </mat-form-field>
+
+  <h5>CellPhone</h5>
+
+  <div formGroupName="cellPhone">
+    <mat-form-field>
+      <input matInput type="text" placeholder="area" formControlName="area" />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        placeholder="prefix"
+        formControlName="prefix"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="line" formControlName="line" />
+    </mat-form-field>
+  </div>
+
+  <h5>homePhone</h5>
+
+  <div formGroupName="homePhone">
+    <mat-form-field>
+      <input matInput type="text" placeholder="area" formControlName="area" />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        placeholder="prefix"
+        formControlName="prefix"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="line" formControlName="line" />
+    </mat-form-field>
+  </div>
+</form>

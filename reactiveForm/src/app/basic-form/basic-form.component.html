@@ -1,1 +1,17 @@
-<p>basic-form works!</p>
+<form [formGroup]="baseForm">
+  Values: {{ baseForm.value | json }}
+  <hr />
+
+  <mat-form-field>
+    <input matInput type="email" placeholder="email" formControlName="email" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      placeholder="message"
+      formControlName="message"
+    />
+  </mat-form-field>
+</form>

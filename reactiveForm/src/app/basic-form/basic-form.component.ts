@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-basic-form',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./basic-form.component.scss']
 })
 export class BasicFormComponent implements OnInit {
+  baseForm: FormGroup;
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
-  }
+    this.baseForm = this.formBuilder.group({
+      email: '',
+      message: ''
+    });
 
+    this.baseForm.valueChanges.subscribe(x => console.log(x));
+  }
 }

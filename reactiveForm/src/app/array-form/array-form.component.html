@@ -1,1 +1,40 @@
-<p>array-form works!</p>
+<form [formGroup]="arrayForm">
+  Values: {{ arrayForm.value | json }}
+  <hr />
+
+  <mat-form-field>
+    <input matInput type="email" placeholder="email" formControlName="email" />
+  </mat-form-field>
+
+  <div formArrayName="phones">
+    <div
+      *ngFor="let phone of getPhones.controls; let idx = index"
+      [formGroupName]="idx"
+    >
+      <mat-form-field>
+        <input matInput type="text" placeholder="area" formControlName="area" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          placeholder="prefix"
+          formControlName="prefix"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="text" placeholder="line" formControlName="line" />
+      </mat-form-field>
+
+      <button mat-raised-button color="danger" (click)="onDeletePhone(idx)">
+        Delete
+      </button>
+    </div>
+  </div>
+
+  <button mat-raised-button color="primary" (click)="onAddPhone()">
+    Add some fields
+  </button>
+</form>
