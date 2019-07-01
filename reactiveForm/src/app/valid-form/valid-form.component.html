@@ -1,1 +1,43 @@
-<p>valid-form works!</p>
+<form [formGroup]="validForm">
+  <p>Values: {{ validForm.value | json }}</p>
+
+  <mat-form-field>
+    <input matInput placeholder="email" formControlName="email" />
+    <mat-error *ngIf="email.invalid && email.touched">
+      Invalid email input message
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="password" formControlName="password" />
+    <mat-error *ngIf="password.invalid">
+      Invalid password input value
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="numField"
+      type="number"
+      formControlName="numField"
+    />
+    <!-- <mat-hint align="eng">More than 18 bro ;3</mat-hint> -->
+
+    <mat-error *ngIf="numField.errors && numField.touched">
+      <!-- {{ numField.errors.min.actual }}  -->
+      <!-- actually intellisence of this thing is still broken in vscode -->
+      Invalid numField input value
+    </mat-error>
+  </mat-form-field>
+
+  <mat-checkbox formControlName="check" color="primary">
+    agreed blah blah
+  </mat-checkbox>
+
+  <hr />
+
+  <button mat-raised-button [disabled]="validForm.invalid">
+    submit (actually not but whatever)
+  </button>
+</form>

@@ -26,12 +26,12 @@ const routes: Routes = [
     component: NestedFormComponent
   },
   {
-    path: 'submit',
-    component: SubmitFormComponent
-  },
-  {
     path: 'valid',
     component: ValidFormComponent
+  },
+  {
+    path: 'submit',
+    component: SubmitFormComponent
   }
 ];
 
