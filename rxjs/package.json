@@ -8,6 +8,7 @@
     "rxjs": "^6.5.2",
     "ts-loader": "^6.0.4",
     "tsc": "^1.20150623.0",
+    "tslint": "^5.18.0",
     "typescript": "^3.5.2",
     "webpack": "^4.35.2",
     "webpack-cli": "^3.3.5",

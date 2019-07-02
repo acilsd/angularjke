@@ -1,9 +1,15 @@
 {
   "compilerOptions": {
     "outDir": "./dist/",
+    "rootDir": "src",
     "noImplicitAny": true,
-    "module": "es6",
+    "module": "esnext",
+    "moduleResolution": "node",
     "target": "es6",
-    "allowJs": true
-  }
+    "allowJs": true,
+    "experimentalDecorators": true,
+    "lib": ["es2017", "es2018", "dom", "esnext.asynciterable"]
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "build", "webpack.config.js"]
 }
