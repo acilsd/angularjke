@@ -13,6 +13,7 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { ShoppingListRoutingModule } from './shopping-list/shopping-list-routing.module';
 import { ShoppingListService } from './shopping-list/services/shopping-list/shopping-list.service';
 import { RecipeService } from './recipe-book/services/recipes/recipe.service';
+import { DirectivesModule } from './directives/directives.module';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -22,7 +23,8 @@ import { RecipeService } from './recipe-book/services/recipes/recipe.service';
     RecipeBookRoutingModule,
     ShoppingListRoutingModule,
     RecipeBookModule,
-    ShoppingListModule
+    ShoppingListModule,
+    DirectivesModule
   ],
   bootstrap: [AppComponent],
   providers: [ShoppingListService, RecipeService]

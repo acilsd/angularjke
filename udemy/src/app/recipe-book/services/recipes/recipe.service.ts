@@ -9,6 +9,7 @@ import { ShoppingListService } from 'src/app/shopping-list/services/shopping-lis
 export class RecipeService {
   constructor(private shoplist: ShoppingListService) {
     const recipe = new Recipe(
+      Number(new Date()),
       'Test Name',
       'Test Description',
       'https://www.wellplated.com/wp-content/uploads/2017/12/Hoppin-John-recipe-600x629.jpg',
@@ -23,6 +24,10 @@ export class RecipeService {
 
   get getRecipes() {
     return [...this.recipes];
+  }
+
+  public getSelectedRecipe(id: number): IRecipe {
+    return this.recipes.find(r => r.id === id);
   }
 
   public addToShopList(data: IIngredient[]) {
