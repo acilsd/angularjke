@@ -8,13 +8,15 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { RecipeItemComponent } from './recipe-item/recipe-item.component';
 import { DirectivesModule } from '../directives/directives.module';
+import { RecipeEditFormComponent } from './recipe-edit-form/recipe-edit-form.component';
 
 @NgModule({
   declarations: [
     RecipeBookListComponent,
     RecipeListComponent,
     RecipeItemComponent,
-    RecipeDetailComponent
+    RecipeDetailComponent,
+    RecipeEditFormComponent
   ],
   imports: [RecipeBookRoutingModule, CommonModule, DirectivesModule],
   bootstrap: [RecipeBookListComponent]
