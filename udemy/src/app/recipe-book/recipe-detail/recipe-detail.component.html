@@ -25,7 +25,9 @@
           <li>
             <a (click)="addToShopList()">To shoplist</a>
           </li>
-          <li><a>Edit recipe</a></li>
+          <li>
+            <a [routerLink]="['/recipes', item.id, 'edit']">Edit recipe</a>
+          </li>
           <li><a>Delete recipe</a></li>
         </ul>
       </div>

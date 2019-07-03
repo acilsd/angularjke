@@ -2,12 +2,23 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RecipeBookListComponent } from './recipe-book-list/recipe-book-list.component';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
+import { RecipeEditFormComponent } from './recipe-edit-form/recipe-edit-form.component';
 
 const routes: Routes = [
   {
     path: '',
     component: RecipeBookListComponent,
-    children: [{ path: ':id', component: RecipeDetailComponent }]
+    children: [
+      {
+        path: 'new',
+        component: RecipeEditFormComponent
+      },
+      { path: ':id', component: RecipeDetailComponent },
+      {
+        path: ':id/edit',
+        component: RecipeEditFormComponent
+      }
+    ]
   }
 ];
 
