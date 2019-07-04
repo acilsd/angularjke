@@ -1,3 +1,7 @@
-<p>
-  recipe-edit-form works!
-</p>
+<div *ngIf="editMode">
+  edit
+</div>
+
+<div *ngIf="!editMode">
+  add
+</div>
