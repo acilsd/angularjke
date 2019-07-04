@@ -1,5 +1,5 @@
 import { IRecipe, Recipe } from '../../models/recipe';
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { IIngredient } from 'src/app/shopping-list/models/ingredient';
 import { ShoppingListService } from 'src/app/shopping-list/services/shopping-list/shopping-list.service';
 
@@ -32,8 +32,6 @@ export class RecipeService {
     this.recipes.push(recipe);
     this.recipes.push(recipe2);
   }
-
-  public selected = new EventEmitter<IRecipe>();
 
   private recipes: IRecipe[] = [];
 
