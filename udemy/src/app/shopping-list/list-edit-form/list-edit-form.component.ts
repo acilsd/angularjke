@@ -56,7 +56,7 @@ export class ListEditFormComponent implements OnInit, OnDestroy {
     return this.form.get('amount');
   }
 
-  onSubmitAdd(e: Event) {
+  onSubmit(e: Event) {
     e.preventDefault();
     const fields = this.form.value as Ingredient;
 
@@ -64,7 +64,10 @@ export class ListEditFormComponent implements OnInit, OnDestroy {
       ? this.slService.onAddIngredient(
           new Ingredient(fields.name, fields.amount)
         )
-      : this.slService.onEditIngredient(fields, 1);
+      : this.slService.onEditIngredient(
+          fields,
+          this.slService.getIngredients.indexOf(this.editingIngr)
+        );
 
     this.edit = false;
   }

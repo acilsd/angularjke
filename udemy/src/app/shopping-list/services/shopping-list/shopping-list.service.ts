@@ -1,18 +1,18 @@
-import { IIngredient } from '../../models/ingredient';
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { IIngredient } from "../../models/ingredient";
+import { Injectable } from "@angular/core";
+import { Subject } from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ShoppingListService {
   public emitDataChange = new Subject<IIngredient[]>();
   public selectedIdx = new Subject<number>();
 
-  private ingredients: IIngredient[] = [{ name: 'Avokado', amount: 5 }];
+  private ingredients: IIngredient[] = [{ name: "Avokado", amount: 5 }];
 
   public get getIngredients() {
-    return [...this.ingredients];
+    return this.ingredients;
   }
 
   public onAddIngredient(val: IIngredient) {
@@ -21,7 +21,8 @@ export class ShoppingListService {
   }
 
   public onEditIngredient(data: IIngredient, idx: number) {
-    console.log('edit');
+    this.getIngredients[idx] = data;
+    this.emitDataChange.next([...this.getIngredients]);
   }
 
   public recieveIngridientsFromRecipe(data: IIngredient[]) {
