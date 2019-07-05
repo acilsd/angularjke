@@ -1,15 +1,15 @@
-import { IIngredient } from "../../models/ingredient";
-import { Injectable } from "@angular/core";
-import { Subject } from "rxjs";
+import { IIngredient } from '../../models/ingredient';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class ShoppingListService {
   public emitDataChange = new Subject<IIngredient[]>();
   public selectedIdx = new Subject<number>();
 
-  private ingredients: IIngredient[] = [{ name: "Avokado", amount: 5 }];
+  private ingredients: IIngredient[] = [{ name: 'Avokado', amount: 5 }];
 
   public get getIngredients() {
     return this.ingredients;
