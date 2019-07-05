@@ -56,14 +56,17 @@ export class ListEditFormComponent implements OnInit, OnDestroy {
     return this.form.get('amount');
   }
 
+  handleAdd = (fields: Ingredient) => {
+    this.slService.onAddIngredient(new Ingredient(fields.name, fields.amount));
+    this.form.reset();
+  }
+
   onSubmit(e: Event) {
     e.preventDefault();
     const fields = this.form.value as Ingredient;
 
     !this.edit
-      ? this.slService.onAddIngredient(
-          new Ingredient(fields.name, fields.amount)
-        )
+      ? this.handleAdd(fields)
       : this.slService.onEditIngredient(
           fields,
           this.slService.getIngredients.indexOf(this.editingIngr)
