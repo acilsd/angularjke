@@ -7,16 +7,21 @@ import { Subject } from 'rxjs';
 })
 export class ShoppingListService {
   public emitDataChange = new Subject<IIngredient[]>();
+  public selectedIdx = new Subject<number>();
 
   private ingredients: IIngredient[] = [{ name: 'Avokado', amount: 5 }];
 
-  get getIngredients() {
+  public get getIngredients() {
     return [...this.ingredients];
   }
 
   public onAddIngredient(val: IIngredient) {
     this.ingredients.push(val);
     this.emitDataChange.next([...this.ingredients]);
+  }
+
+  public onEditIngredient(data: IIngredient, idx: number) {
+    console.log('edit');
   }
 
   public recieveIngridientsFromRecipe(data: IIngredient[]) {

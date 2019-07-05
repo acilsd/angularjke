@@ -1,16 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { Ingredient } from '../models/ingredient';
+import { Ingredient, IIngredient } from '../models/ingredient';
 import { ShoppingListService } from '../services/shopping-list/shopping-list.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-list-edit-form',
   templateUrl: './list-edit-form.component.html',
   styleUrls: ['./list-edit-form.component.scss']
 })
-export class ListEditFormComponent implements OnInit {
-  form: FormGroup;
+export class ListEditFormComponent implements OnInit, OnDestroy {
+  private subscription: Subscription;
+  private editingIngr: IIngredient;
+
+  public edit = false;
+  public form: FormGroup;
 
   constructor(
     private slService: ShoppingListService,
@@ -29,6 +34,18 @@ export class ListEditFormComponent implements OnInit {
         ]
       ]
     });
+
+    this.subscription = this.slService.selectedIdx.subscribe((idx: number) => {
+      this.editingIngr = this.slService.getIngredients[idx];
+
+      if (this.editingIngr) {
+        this.edit = true;
+        this.form.setValue({
+          name: this.editingIngr.name,
+          amount: this.editingIngr.amount
+        });
+      }
+    });
   }
 
   get name() {
@@ -43,6 +60,16 @@ export class ListEditFormComponent implements OnInit {
     e.preventDefault();
     const fields = this.form.value as Ingredient;
 
-    this.slService.onAddIngredient(new Ingredient(fields.name, fields.amount));
+    !this.edit
+      ? this.slService.onAddIngredient(
+          new Ingredient(fields.name, fields.amount)
+        )
+      : this.slService.onEditIngredient(fields, 1);
+
+    this.edit = false;
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
