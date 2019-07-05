@@ -15,10 +15,8 @@ export class ShoppingListService {
   }
 
   public onAddIngredient(val: IIngredient) {
-    if (val.name && val.amount) {
-      this.ingredients.push(val);
-      this.emitDataChange.next([...this.ingredients]);
-    }
+    this.ingredients.push(val);
+    this.emitDataChange.next([...this.ingredients]);
   }
 
   public recieveIngridientsFromRecipe(data: IIngredient[]) {
