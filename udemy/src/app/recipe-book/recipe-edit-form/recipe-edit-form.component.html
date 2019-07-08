@@ -1,7 +1,69 @@
-<div *ngIf="editMode">
+<!-- <div *ngIf="editMode">
   edit
 </div>
 
 <div *ngIf="!editMode">
   add
+</div> -->
+
+<div class="row">
+  <div class="col-xs-12">
+    <form>
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="Submit" class="btn btn-success">Save</button>
+          <button type="button" class="btn btn-danger">Cancel</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              class="form-control"
+              placeholder="Name..."
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="imgPath">Image path</label>
+            <input
+              type="text"
+              id="imgPath"
+              class="form-control"
+              placeholder="Image path..."
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <img src="" class="img-responsive" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="descr">Description</label>
+            <textarea
+              rows="6"
+              type="text"
+              id="descr"
+              class="form-control"
+              placeholder="Description..."
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
