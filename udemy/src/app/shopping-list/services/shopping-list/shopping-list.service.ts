@@ -25,6 +25,11 @@ export class ShoppingListService {
     this.emitDataChange.next([...this.getIngredients]);
   }
 
+  public onDeleteIngredient(idx: number) {
+    this.getIngredients.splice(idx, 1);
+    this.emitDataChange.next([...this.getIngredients]);
+  }
+
   public recieveIngridientsFromRecipe(data: IIngredient[]) {
     this.ingredients = [...this.ingredients, ...data];
     this.emitDataChange.next([...this.ingredients]);

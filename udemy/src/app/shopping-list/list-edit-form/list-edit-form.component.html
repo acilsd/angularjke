@@ -27,13 +27,22 @@
             {{ edit ? "Edit" : "Add" }}
           </button>
           <button
+            *ngIf="edit"
             style="margin-right: 5px;"
             class="btn btn-danger"
             type="button"
+            [disabled]="!edit"
+            (click)="onDelete()"
           >
             Delete
           </button>
-          <button class="btn btn-primary" type="button">Clear</button>
+          <button
+            class="btn btn-primary"
+            type="button"
+            (click)="form.reset(); edit = false"
+          >
+            Clear
+          </button>
         </div>
       </div>
     </form>
