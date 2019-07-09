@@ -1,14 +1,7 @@
-<!-- <div *ngIf="editMode">
-  edit
-</div>
-
-<div *ngIf="!editMode">
-  add
-</div> -->
-
 <div class="row">
   <div class="col-xs-12">
-    <form>
+    <form [formGroup]="rcForm" (ngSubmit)="onSubmit()">
+      <h1>{{ rcForm.value | json }}</h1>
       <div class="row">
         <div class="col-xs-12">
           <button type="Submit" class="btn btn-success">Save</button>
@@ -21,6 +14,7 @@
           <div class="form-group">
             <label for="name">Name</label>
             <input
+              formControlName="name"
               type="text"
               id="name"
               class="form-control"
@@ -35,6 +29,7 @@
           <div class="form-group">
             <label for="imgPath">Image path</label>
             <input
+              formControlName="imgPath"
               type="text"
               id="imgPath"
               class="form-control"
@@ -55,12 +50,37 @@
           <div class="form-group">
             <label for="descr">Description</label>
             <textarea
+              formControlName="descr"
               rows="6"
               type="text"
               id="descr"
               class="form-control"
               placeholder="Description..."
             ></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" *ngIf="recipe && recipe.ingredients">
+        <div class="col-xs-12" formArrayName="ingredients">
+          <div
+            class="row"
+            *ngFor="let ingr of ingrList.controls; let i = index"
+            [formGroupName]="i"
+          >
+            <div class="col-xs-8">
+              <input class="form-control" type="text" formControlName="name" />
+            </div>
+            <div class="col-xs-2">
+              <input
+                class="form-control"
+                type="number"
+                formControlName="amount"
+              />
+            </div>
+            <div class="col-xs-2">
+              <button class="btn btn-danger">X</button>
+            </div>
           </div>
         </div>
       </div>

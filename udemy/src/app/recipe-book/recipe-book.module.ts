@@ -9,6 +9,7 @@ import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { RecipeItemComponent } from './recipe-item/recipe-item.component';
 import { DirectivesModule } from '../directives/directives.module';
 import { RecipeEditFormComponent } from './recipe-edit-form/recipe-edit-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,12 @@ import { RecipeEditFormComponent } from './recipe-edit-form/recipe-edit-form.com
     RecipeDetailComponent,
     RecipeEditFormComponent
   ],
-  imports: [RecipeBookRoutingModule, CommonModule, DirectivesModule],
+  imports: [
+    RecipeBookRoutingModule,
+    CommonModule,
+    DirectivesModule,
+    ReactiveFormsModule
+  ],
   bootstrap: [RecipeBookListComponent]
 })
 export class RecipeBookModule {}
