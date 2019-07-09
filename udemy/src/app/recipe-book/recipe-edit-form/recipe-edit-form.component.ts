@@ -1,9 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { IRecipe } from '../models/recipe';
+import { IRecipe, Recipe } from '../models/recipe';
 import { RecipeService } from '../services/recipes/recipe.service';
-import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { IIngredient } from 'src/app/shopping-list/models/ingredient';
+
+const uuid = () =>
+  'recipe_' +
+  Math.random()
+    .toString(36)
+    .substr(2, 9);
 
 @Component({
   selector: 'app-recipe-edit-form',
@@ -28,14 +34,13 @@ export class RecipeEditFormComponent implements OnInit {
     });
 
     this.rcForm = this.fb.group({
-      // id
-      name: '',
-      descr: '',
-      imgPath: '',
+      name: ['', [Validators.required]],
+      descr: ['', [Validators.required]],
+      imgPath: ['', [Validators.required]],
       ingredients: this.fb.array([
         this.fb.group({
-          name: '',
-          amount: ''
+          name: ['', [Validators.required]],
+          amount: [null, [Validators.required, Validators.min(1)]]
         })
       ])
     });
@@ -49,11 +54,16 @@ export class RecipeEditFormComponent implements OnInit {
     this.rcForm.patchValue({
       name: this.recipe.name,
       descr: this.recipe.descr,
-      imgPath: this.recipe.descr
+      imgPath: this.recipe.imgPath
     });
 
     const ingrFormArr = this.fb.array(
-      this.recipe.ingredients.map(ingr => this.fb.group(ingr))
+      this.recipe.ingredients.map(ingr =>
+        this.fb.group({
+          name: [ingr.name, [Validators.required]],
+          amount: [ingr.amount, [Validators.required, Validators.min(1)]]
+        })
+      )
     );
 
     this.rcForm.setControl('ingredients', ingrFormArr);
@@ -63,14 +73,26 @@ export class RecipeEditFormComponent implements OnInit {
     return this.rcForm.get('ingredients') as FormArray;
   }
 
-  createIngr() {
-    return this.fb.group({
-      name: '',
-      amount: ''
-    });
+  public onAddIngr() {
+    this.ingrList.push(
+      this.fb.group({
+        name: ['', [Validators.required]],
+        amount: [null, [Validators.required, Validators.min(1)]]
+      })
+    );
   }
 
   onSubmit() {
-    console.log(this.rcForm);
+    const { name, descr, imgPath, ingredients } = this.rcForm.value;
+    const newRecipe = new Recipe(
+      this.recipe ? this.recipe.id : uuid(),
+      name,
+      descr,
+      imgPath,
+      ingredients
+    );
+    this.editMode
+      ? this.recipeService.editRecipe(newRecipe)
+      : this.recipeService.addRecipe(newRecipe);
   }
 }
