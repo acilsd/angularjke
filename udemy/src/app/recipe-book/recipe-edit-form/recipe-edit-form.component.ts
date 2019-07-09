@@ -1,15 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { IRecipe, Recipe } from '../models/recipe';
 import { RecipeService } from '../services/recipes/recipe.service';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
-import { IIngredient } from 'src/app/shopping-list/models/ingredient';
-
-const uuid = () =>
-  'recipe_' +
-  Math.random()
-    .toString(36)
-    .substr(2, 9);
 
 @Component({
   selector: 'app-recipe-edit-form',
@@ -18,7 +11,6 @@ const uuid = () =>
 })
 export class RecipeEditFormComponent implements OnInit {
   public recipe: IRecipe;
-  public editMode = false;
   public rcForm: FormGroup;
 
   constructor(
@@ -29,7 +21,6 @@ export class RecipeEditFormComponent implements OnInit {
 
   ngOnInit() {
     this.router.params.subscribe((params: Params) => {
-      params.id ? (this.editMode = true) : (this.editMode = false);
       this.recipe = this.recipeService.getSelectedRecipe(params.id);
     });
 
@@ -44,10 +35,7 @@ export class RecipeEditFormComponent implements OnInit {
         })
       ])
     });
-
-    if (this.editMode) {
-      this.instEditValues();
-    }
+    this.instEditValues();
   }
 
   private instEditValues() {
@@ -85,14 +73,12 @@ export class RecipeEditFormComponent implements OnInit {
   onSubmit() {
     const { name, descr, imgPath, ingredients } = this.rcForm.value;
     const newRecipe = new Recipe(
-      this.recipe ? this.recipe.id : uuid(),
+      this.recipe.id,
       name,
       descr,
       imgPath,
       ingredients
     );
-    this.editMode
-      ? this.recipeService.editRecipe(newRecipe)
-      : this.recipeService.addRecipe(newRecipe);
+    this.recipeService.editRecipe(newRecipe);
   }
 }
