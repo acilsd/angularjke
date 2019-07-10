@@ -6,38 +6,46 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  appStatus = new Promise((res, rej) => {
+    setTimeout(() => {
+      res('app is stable');
+    }, 2000);
+  });
+
   public hardcodedData = [
     {
       type: 'medium',
-      name: 'Prod',
+      name: 'Production',
       status: 'stable',
-      started: new Date(15, 6, 2019)
+      started: new Date()
     },
     {
       type: 'small',
-      name: 'User',
+      name: 'User very long server name',
       status: 'offline',
-      started: new Date(14, 6, 2019)
+      started: new Date()
     },
     {
       type: 'large',
-      name: 'Test',
+      name: 'Test server',
       status: 'stable',
-      started: new Date(13, 6, 2019)
+      started: new Date()
     },
     {
       type: 'medium',
-      name: 'CI',
+      name: 'I dont know something',
       status: 'critical',
-      started: new Date(12, 6, 2019)
+      started: new Date()
     },
     {
       type: 'small',
-      name: 'Dev',
+      name: 'Development server',
       status: 'offline',
-      started: new Date(11, 6, 2019)
+      started: new Date()
     }
   ];
+
+  public filteredStatus = '';
 
   public getStatusClasses(server: any) {
     return {

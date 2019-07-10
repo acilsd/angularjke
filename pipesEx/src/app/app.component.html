@@ -1,15 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <hr />
+      <input type="text" [(ngModel)]="filteredStatus" />
+      <hr />
+      <h3>App status: {{ appStatus | async }}</h3>
       <ul class="list-group">
         <li
           class="list-group-item"
-          *ngFor="let server of hardcodedData"
+          *ngFor="let server of hardcodedData | filter: filteredStatus:'status'"
           [ngClass]="getStatusClasses(server)"
         >
           <span class="badge">{{ server.status }}</span>
           <strong>
-            {{ server.name }} | {{ server.type }} | {{ server.started }}
+            {{ server.name | shorten: 10 }} | {{ server.type | uppercase }} |
+            {{ server.started | date: "fullDate" }}
           </strong>
         </li>
       </ul>
