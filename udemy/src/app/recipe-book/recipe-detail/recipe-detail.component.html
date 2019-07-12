@@ -28,7 +28,7 @@
           <li>
             <a [routerLink]="['/recipes', item.id, 'edit']">Edit recipe</a>
           </li>
-          <li><a>Delete recipe</a></li>
+          <li><a (click)="onDelete()">Delete recipe</a></li>
         </ul>
       </div>
     </div>

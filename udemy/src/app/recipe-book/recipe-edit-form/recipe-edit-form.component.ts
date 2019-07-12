@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IRecipe, Recipe } from '../models/recipe';
 import { RecipeService } from '../services/recipes/recipe.service';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
@@ -15,12 +15,13 @@ export class RecipeEditFormComponent implements OnInit {
 
   constructor(
     private recipeService: RecipeService,
-    private router: ActivatedRoute,
+    private route: ActivatedRoute,
+    private router: Router,
     private fb: FormBuilder
   ) {}
 
   ngOnInit() {
-    this.router.params.subscribe((params: Params) => {
+    this.route.params.subscribe((params: Params) => {
       this.recipe = this.recipeService.getSelectedRecipe(params.id);
     });
 
@@ -80,5 +81,10 @@ export class RecipeEditFormComponent implements OnInit {
       ingredients
     );
     this.recipeService.editRecipe(newRecipe);
+    this.handleRedirect();
+  }
+
+  handleRedirect() {
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 }

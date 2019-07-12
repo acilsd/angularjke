@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IRecipe, Recipe } from '../models/recipe';
 import { RecipeService } from '../services/recipes/recipe.service';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
@@ -21,7 +21,8 @@ export class RecipeAddFormComponent implements OnInit {
 
   constructor(
     private recipeService: RecipeService,
-    private router: ActivatedRoute,
+    private route: ActivatedRoute,
+    private router: Router,
     private fb: FormBuilder
   ) {}
 
@@ -51,5 +52,10 @@ export class RecipeAddFormComponent implements OnInit {
     const { name, descr, imgPath, ingredients } = this.rcForm.value;
     const newRecipe = new Recipe(uuid(), name, descr, imgPath, ingredients);
     this.recipeService.addRecipe(newRecipe);
+    this.handleRedirect();
+  }
+
+  handleRedirect() {
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 }

@@ -52,6 +52,11 @@ export class RecipeService {
     this.dataChange.next([...this.recipes]);
   }
 
+  public deleteRecipe(idx: string) {
+    this.recipes = this.recipes.filter(recipe => recipe.id !== idx);
+    this.dataChange.next([...this.recipes]);
+  }
+
   public getSelectedRecipe(id: string): IRecipe {
     return this.recipes.find(r => r.id === id);
   }
