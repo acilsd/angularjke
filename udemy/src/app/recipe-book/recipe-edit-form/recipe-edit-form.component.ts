@@ -84,6 +84,10 @@ export class RecipeEditFormComponent implements OnInit {
     this.handleRedirect();
   }
 
+  onDeleteIngr(idx: number) {
+    this.ingrList.removeAt(idx);
+  }
+
   handleRedirect() {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
