@@ -17,25 +17,7 @@ export class RecipeService {
   private recipes: IRecipe[] = [];
   public dataChange = new Subject<IRecipe[]>();
 
-  constructor(private shoplist: ShoppingListService) {
-    const recipe = new Recipe(
-      uuid(),
-      'Test Name',
-      'Test Description',
-      'https://www.wellplated.com/wp-content/uploads/2017/12/Hoppin-John-recipe-600x629.jpg',
-      [{ name: 'avokado', amount: 12 }, { name: 'something', amount: 1 }]
-    );
-
-    const recipe2 = new Recipe(
-      uuid(),
-      'Test Name2',
-      'Test Description2',
-      'https://www.wellplated.com/wp-content/uploads/2017/12/Hoppin-John-recipe-600x629.jpg',
-      [{ name: 'volk', amount: 1 }]
-    );
-    this.recipes.push(recipe);
-    this.recipes.push(recipe2);
-  }
+  constructor(private shoplist: ShoppingListService) {}
 
   get getRecipes() {
     return [...this.recipes];

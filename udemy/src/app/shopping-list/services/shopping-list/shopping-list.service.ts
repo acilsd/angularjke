@@ -9,7 +9,7 @@ export class ShoppingListService {
   public emitDataChange = new Subject<IIngredient[]>();
   public selectedIdx = new Subject<number>();
 
-  private ingredients: IIngredient[] = [{ name: 'Avokado', amount: 5 }];
+  private ingredients: IIngredient[] = [];
 
   public get getIngredients() {
     return this.ingredients;
