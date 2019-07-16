@@ -23,6 +23,11 @@ export class RecipeService {
     return [...this.recipes];
   }
 
+  public fetchRecipes(data: IRecipe[]) {
+    this.recipes = data;
+    this.dataChange.next([...this.recipes]);
+  }
+
   public addRecipe(value: IRecipe) {
     this.recipes.push(value);
     this.dataChange.next([...this.recipes]);
