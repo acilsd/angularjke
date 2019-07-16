@@ -13,9 +13,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {}
 
   onSave() {
-    this.dService.onSave().subscribe((res: IRecipe[]) => {
-      console.log('response: ', res);
-    });
+    this.dService.onSave().subscribe((res: IRecipe[]) => {});
   }
 
   onFetch() {
