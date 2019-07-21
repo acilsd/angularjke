@@ -1,0 +1,29 @@
+.btn-group {
+  display: flex;
+
+  &:first-child {
+    flex: 1;
+    text-align: left;
+  }
+}
+
+.dropdown-menu {
+  width: 100%;
+}
+
+.dropdown-item {
+  cursor: pointer;
+
+  &.active {
+    cursor: default;
+  }
+
+  &:active {
+    background: transparent;
+    color: inherit;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
